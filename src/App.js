@@ -305,7 +305,7 @@ function App() {
                       onClick={() =>
                         changerEtatEntreprise(index, ETATS_ENTREPRISE.ENTRETIEN)
                       }>
-                      Entretien
+                      📅
                     </button>
                   )}
                   {entreprise.etat !== ETATS_ENTREPRISE.REFUS && (
@@ -313,7 +313,7 @@ function App() {
                       onClick={() =>
                         changerEtatEntreprise(index, ETATS_ENTREPRISE.REFUS)
                       }>
-                      Refus
+                      ❌
                     </button>
                   )}
                 </td>
@@ -348,7 +348,7 @@ function App() {
                       onClick={() =>
                         changerEtatEntreprise(index, ETATS_ENTREPRISE.ENTRETIEN)
                       }>
-                      Entretien
+                      📅
                     </button>
                   )}
                   {entreprise.etat !== ETATS_ENTREPRISE.REFUS && (
@@ -356,7 +356,7 @@ function App() {
                       onClick={() =>
                         changerEtatEntreprise(index, ETATS_ENTREPRISE.REFUS)
                       }>
-                      Refus
+                      ❌
                     </button>
                   )}
                 </td>
