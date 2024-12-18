@@ -1,6 +1,5 @@
 import { DEPARTEMENTS_ILE_DE_FRANCE } from "../constants/location";
-
-export async function determinerLocalisation(ville, pays) {
+async function determinerLocalisation(ville, pays) {
   if (pays === "France") {
     try {
       const response = await fetch(
@@ -28,3 +27,5 @@ export async function determinerLocalisation(ville, pays) {
   }
   return pays;
 }
+
+export { determinerLocalisation };

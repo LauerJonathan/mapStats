@@ -14,6 +14,7 @@ function App() {
     entreprises,
     ajouterEntreprise,
     changerEtatEntreprise,
+    modifierEntreprise,
     ETATS_ENTREPRISE,
   } = useEntreprises();
 
@@ -89,6 +90,7 @@ function App() {
           entreprisesParLocalisation={entreprisesParLocalisation}
           ETATS_ENTREPRISE={ETATS_ENTREPRISE}
           changerEtatEntreprise={changerEtatEntreprise}
+          modifierEntreprise={modifierEntreprise}
         />
 
         <h2>Entreprises internationales</h2>
@@ -98,6 +100,7 @@ function App() {
           entreprisesParLocalisation={entreprisesParLocalisation}
           ETATS_ENTREPRISE={ETATS_ENTREPRISE}
           changerEtatEntreprise={changerEtatEntreprise}
+          modifierEntreprise={modifierEntreprise}
         />
       </section>
     </div>

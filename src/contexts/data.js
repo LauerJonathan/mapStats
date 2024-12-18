@@ -1,4 +1,4 @@
-const entreprises = [
+const companyList = [
   {
     nom: "EuroInformation",
     poste: "Chef de projet digital",
@@ -24,11 +24,11 @@ const entreprises = [
     etat: "en attente",
   },
   {
-    nom: "EuroInformation",
-    poste: "Gestionnaire de site web",
-    ville: "Strasbourg",
-    departement: "67",
-    pays: "France",
+    nom: "EMG SA",
+    poste: "Développeur REACT/NextJS",
+    ville: "Meyrin",
+    departement: "Suisse",
+    pays: "Suisse",
     etat: "en attente",
   },
   {
@@ -79,4 +79,22 @@ const entreprises = [
     pays: "France",
     etat: "en attente",
   },
+  {
+    nom: "Excel IT",
+    poste: "Intégrateur WEB",
+    ville: "Luxembourg",
+    departement: "Luxembourg",
+    pays: "Luxembourg",
+    etat: "en attente",
+  },
+  {
+    nom: "interact",
+    poste: "Développeur front",
+    ville: "Bonnevoie",
+    departement: "Luxembourg",
+    pays: "Luxembourg",
+    etat: "en attente",
+  },
 ];
+
+export { companyList };

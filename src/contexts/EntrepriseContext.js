@@ -1,4 +1,6 @@
-import React, { createContext, useContext, useState, useEffect } from 'react';
+import React, { createContext, useContext, useState, useEffect } from "react";
+import { determinerLocalisation } from "../utils/location";
+import { companyList } from "./data";
 
 const ETATS_ENTREPRISE = {
   EN_ATTENTE: "en attente",
@@ -34,19 +36,56 @@ export function EntreprisesProvider({ children }) {
     );
   };
 
+  const modifierEntreprise = async (index, entrepriseModifiee) => {
+    try {
+      if (entrepriseModifiee.pays === "France") {
+        const localisation = await determinerLocalisation(
+          entrepriseModifiee.ville,
+          entrepriseModifiee.pays
+        );
+
+        if (localisation) {
+          const localisations = Array.isArray(localisation)
+            ? localisation
+            : [localisation];
+
+          entrepriseModifiee.departement = localisations[0];
+        } else {
+          throw new Error(
+            "Impossible de détecter la localisation pour cette ville."
+          );
+        }
+      }
+
+      setEntreprises((prev) =>
+        prev.map((entreprise, i) =>
+          i === index ? { ...entreprise, ...entrepriseModifiee } : entreprise
+        )
+      );
+    } catch (error) {
+      throw error;
+    }
+  };
+
+  const supprimerToutesEntreprises = () => {
+    setEntreprises([]);
+    localStorage.removeItem("entreprises");
+  };
+
+  const value = {
+    entreprises,
+    ajouterEntreprise,
+    changerEtatEntreprise,
+    modifierEntreprise,
+    supprimerToutesEntreprises,
+    ETATS_ENTREPRISE,
+  };
+
   return (
-    <EntreprisesContext.Provider
-      value={{
-        entreprises,
-        ajouterEntreprise,
-        changerEtatEntreprise,
-        ETATS_ENTREPRISE,
-      }}>
+    <EntreprisesContext.Provider value={value}>
       {children}
     </EntreprisesContext.Provider>
   );
 }
 
-export function useEntreprises() {
-  return useContext(EntreprisesContext);
-}
+export const useEntreprises = () => useContext(EntreprisesContext);
