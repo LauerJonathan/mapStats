@@ -208,7 +208,7 @@ function App() {
   return (
     <div className="App">
       <section>
-        <h1>Ma carte interactive</h1>
+        <h1>Recherche d'emploi</h1>
         <France departements={departementsPourCarte} selectedColor="#007bff" />
       </section>
       <section>
