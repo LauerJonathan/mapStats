@@ -15,4 +15,10 @@ const ETATS_ENTREPRISE = {
   REFUS: "refus",
 };
 
-export { DEPARTEMENTS_ILE_DE_FRANCE, ETATS_ENTREPRISE };
+const COUNTRY_CODE = {
+  France: "fr",
+  Belgique: "be",
+  Suisse: "ch",
+  Luxembourg: "lu",
+};
+export { DEPARTEMENTS_ILE_DE_FRANCE, ETATS_ENTREPRISE, COUNTRY_CODE };

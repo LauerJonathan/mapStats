@@ -1,21 +1,17 @@
-import React, { use, useState } from "react";
+import React, { useState } from "react";
 import { EditCompanyModal } from "../EditCompanyModal";
 
-import { useDispatch, useSelector } from "react-redux"; // Importer useDispatch et useSelector
+import { useDispatch } from "react-redux"; // Importer useDispatch et useSelector
 import { updateCompany } from "../../redux/features/companiesSlice"; // Importer l'action addCompany
-
+import { ETATS_ENTREPRISE, COUNTRY_CODE } from "../../constants/global";
 export function CompanyTable({
   companies,
   isInternational,
-  entreprisesParLocalisation,
-  ETATS_ENTREPRISE,
-  changerEtatEntreprise,
   modifierEntreprise,
 }) {
   const [editingCompany, setEditingCompany] = useState(null);
   const [editingIndex, setEditingIndex] = useState(null);
-
-  const [formData, setFormData] = useState();
+  const [currentCountry, setCurrentCountry] = useState(null);
 
   const handleEdit = (company, index) => {
     setEditingCompany(company);
@@ -31,6 +27,23 @@ export function CompanyTable({
       alert(error.message);
     }
   };
+
+  const getStatePriority = (state) => {
+    switch (state) {
+      case ETATS_ENTREPRISE.ENTRETIEN:
+        return 1;
+      case ETATS_ENTREPRISE.EN_ATTENTE:
+        return 2;
+      case ETATS_ENTREPRISE.REFUS:
+        return 3;
+      default:
+        return 4;
+    }
+  };
+
+  const sortedCompanies = [...companies].sort((a, b) => {
+    return getStatePriority(a.etat) - getStatePriority(b.etat);
+  });
 
   const dispatch = useDispatch();
 
@@ -50,14 +63,13 @@ export function CompanyTable({
           <tr className="bg-gray-100">
             <th className="border p-2 text-left">Nom</th>
             <th className="border p-2 text-left">Ville</th>
-            <th className="border p-2 text-left">Pays</th>
             <th className="border p-2 text-left">Poste</th>
             <th className="border p-2 text-left">État</th>
             <th className="border p-2 text-left">Actions</th>
           </tr>
         </thead>
         <tbody>
-          {companies.map((entreprise, index) => {
+          {sortedCompanies.map((entreprise, index) => {
             return (
               <tr
                 key={index}
@@ -71,9 +83,10 @@ export function CompanyTable({
                 <td className="border p-2">{entreprise.nom}</td>
                 <td className="border p-2">
                   <strong>{entreprise.ville}</strong>
-                  {!isInternational && ` (${entreprise.departement})`}
+                  {!isInternational
+                    ? ` (${entreprise.departement})`
+                    : ` (${COUNTRY_CODE[entreprise.pays]})`}
                 </td>
-                <td className="border p-2">{entreprise.pays}</td>
                 <td className="border p-2">{entreprise.poste}</td>
                 <td className="border p-2">{entreprise.etat}</td>
                 <td className="border p-2">

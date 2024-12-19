@@ -107,10 +107,10 @@ export function AddCompanyForm() {
 
       <button type="submit">Ajouter</button>
 
-      {/* Affichage du status */}
+      {/* Affichage du status 
       {status === "loading" && <p>Enregistrement de l'entreprise...</p>}
       {status === "failed" && <p style={{ color: "red" }}>Erreur: {error}</p>}
-      {status === "succeeded" && <p>Entreprise ajoutée avec succès!</p>}
+      {status === "succeeded" && <p>Entreprise ajoutée avec succès!</p>} */}
     </form>
   );
 }
