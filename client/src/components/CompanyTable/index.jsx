@@ -11,7 +11,6 @@ export function CompanyTable({
 }) {
   const [editingCompany, setEditingCompany] = useState(null);
   const [editingIndex, setEditingIndex] = useState(null);
-  const [currentCountry, setCurrentCountry] = useState(null);
 
   const handleEdit = (company, index) => {
     setEditingCompany(company);
@@ -65,7 +64,7 @@ export function CompanyTable({
             <th className="border p-2 text-left">Ville</th>
             <th className="border p-2 text-left">Poste</th>
             <th className="border p-2 text-left">État</th>
-            <th className="border p-2 text-left">Actions</th>
+            <th className="border p-2 txtcenter">Actions</th>
           </tr>
         </thead>
         <tbody>
@@ -90,7 +89,7 @@ export function CompanyTable({
                 <td className="border p-2">{entreprise.poste}</td>
                 <td className="border p-2">{entreprise.etat}</td>
                 <td className="border p-2">
-                  <div className="flex gap-2">
+                  <div className="flex gap-2 centerX">
                     <button
                       onClick={() => handleEdit(entreprise, index)}
                       className="p-1 hover:bg-gray-100 rounded"

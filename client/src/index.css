@@ -115,6 +115,15 @@ table {
   font-size: 14px;
 }
 
+.App th.txtcenter {
+  text-align: center;
+}
+
+.App .centerX {
+  display: flex;
+  justify-content: center;
+}
+
 /* Status Row Coloring */
 .App tr:not(.bg-green):not(.bg-red) td {
   background-color: #f8d486;
